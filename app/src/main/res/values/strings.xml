@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Social Media App</string>
+
     <string name="title_posts">Posts</string>
     <string name="title_album">Albums</string>
     <string name="title_user">User</string>
-
+    <string name="title_photos">Photos</string>
     <string name="title_comments">Comments</string>
 
     <!-- TODO: Remove or change this placeholder text -->
