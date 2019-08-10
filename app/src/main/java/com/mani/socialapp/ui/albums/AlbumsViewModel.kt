@@ -7,17 +7,19 @@ import androidx.paging.Config
 import androidx.paging.toLiveData
 import com.mani.socialapp.data.repo.AlbumsRepo
 import com.mani.socialapp.util.AndroidDisposable
+import com.mani.socialapp.util.SharedPreference
 import io.reactivex.schedulers.Schedulers
 
 class AlbumsViewModel(app: Application) : AndroidViewModel(app) {
 
     private val albumRepo = AlbumsRepo(app)
     private var disposable = AndroidDisposable()
+    private val userId = SharedPreference(app).getValueInt("userId")
 
-    val allAlbums = albumRepo.getAlbumsFromDB().toLiveData(Config(30))
+    val allAlbums = albumRepo.getAlbumsByUser(userId).toLiveData(Config(30))
     val allPhotos = albumRepo.getPhotosFromDB().toLiveData(Config(30))
 
-    fun getAlbums(userId: Int) {
+    fun getAlbums() {
         disposable.add(
             albumRepo.getAlbums(userId)
                 .observeOn(Schedulers.io())

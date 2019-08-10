@@ -1,9 +1,6 @@
 package com.mani.socialapp.data
 
-import com.mani.socialapp.data.model.Albums
-import com.mani.socialapp.data.model.Comments
-import com.mani.socialapp.data.model.Photos
-import com.mani.socialapp.data.model.Posts
+import com.mani.socialapp.data.model.*
 import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -24,6 +21,9 @@ interface Api {
 
     @GET("albums")
     fun getAllAlbums(@Query("userId") userId: Int): Observable<MutableList<Albums>>
+
+    @GET("users")
+    fun getAllUsers(): Observable<MutableList<User>>
 
     @GET("photos")
     fun getPhotosByAlbumId(@Query("albumId") albumId: Int): Observable<MutableList<Photos>>

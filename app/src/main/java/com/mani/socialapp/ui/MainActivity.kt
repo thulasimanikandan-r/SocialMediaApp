@@ -1,12 +1,16 @@
 package com.mani.socialapp.ui
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mani.socialapp.R
 import com.mani.socialapp.ui.albums.AlbumsFragment
 import com.mani.socialapp.ui.posts.PostsFragment
+import com.mani.socialapp.ui.users.UserDetailsFragment
+import com.mani.socialapp.ui.users.UsersFragment
 import com.mani.socialapp.util.addFragment
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_user_details -> {
-
+                addFragment(R.id.fragment, UserDetailsFragment.newInstance(), "UsersDetailsFragment")
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -40,4 +44,25 @@ class MainActivity : AppCompatActivity() {
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         navView.selectedItemId = R.id.navigation_posts
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            R.id.navigation_user -> {
+                UsersFragment.newInstance().show(this.supportFragmentManager, "UserBottomDialogFragment")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 }
+
+

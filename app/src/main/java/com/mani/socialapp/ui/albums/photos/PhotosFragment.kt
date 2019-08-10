@@ -1,20 +1,22 @@
 package com.mani.socialapp.ui.albums.photos
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import com.mani.socialapp.ui.MainActivity
 import com.mani.socialapp.R
+import com.mani.socialapp.ui.MainActivity
 import com.mani.socialapp.ui.albums.AlbumsViewModel
+import com.mani.socialapp.ui.albums.photos.PhotoViewerActivity.Companion.PHOTO_VIEW_ID
 import com.mani.socialapp.util.updateActionBarTitle
 import kotlinx.android.synthetic.main.post_fragment.*
+
 
 class PhotosFragment : Fragment() {
 
@@ -35,7 +37,6 @@ class PhotosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         (activity as? MainActivity)?.updateActionBarTitle(R.string.title_photos, true)
-        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.post_fragment, container, false)
     }
 
@@ -53,7 +54,9 @@ class PhotosFragment : Fragment() {
             this.adapter = adapter
             layoutManager = GridLayoutManager(this@PhotosFragment.context, 2)
             adapter.onItemClick = {
-                Toast.makeText(this@PhotosFragment.context, "inside${it?.id}", Toast.LENGTH_SHORT).show()
+                val intent = Intent(activity, PhotoViewerActivity::class.java)
+                intent.putExtra(PHOTO_VIEW_ID, it?.url)
+                startActivity(intent)
             }
         }
     }

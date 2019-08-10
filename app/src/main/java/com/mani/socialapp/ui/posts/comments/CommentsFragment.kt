@@ -31,7 +31,7 @@ class CommentsFragment : BottomSheetDialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
         val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
-        val view = View.inflate(context, R.layout.comment_fragment, null)
+        val view = View.inflate(context, R.layout.bottom_sheet_fragment, null)
         val postId = arguments?.getInt(POST_ID)!!
 
         viewModel = ViewModelProviders.of(this).get(PostsViewModel::class.java)
@@ -56,6 +56,6 @@ class CommentsFragment : BottomSheetDialogFragment() {
 
     override fun onStart() {
         super.onStart()
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 }

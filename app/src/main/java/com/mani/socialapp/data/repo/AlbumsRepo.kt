@@ -17,7 +17,7 @@ class AlbumsRepo(app: Application) {
     fun getAlbums(userId: Int): Observable<MutableList<Albums>> =
         Api.invoke().getAllAlbums(userId)
 
-    fun getAlbumsFromDB() = albumsDao.getAllData()
+    fun getAlbumsByUser(userId : Int) = albumsDao.getAllDataByUser(userId)
 
     fun insertAlbums(albums: MutableList<Albums>) {
         Completable.fromAction {

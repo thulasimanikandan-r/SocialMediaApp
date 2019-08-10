@@ -18,7 +18,7 @@ class PostRepo(app: Application) {
     fun getAllPostData(userId: Int): Observable<MutableList<Posts>> =
         Api.invoke().getAllPosts(userId)
 
-    fun getAllPostsFromDB() = postDao.getAllData()
+    fun getAllPostsByUser(userId: Int) = postDao.getAllDataByUser(userId)
 
     fun insertAllData(posts: MutableList<Posts>) {
         Completable.fromAction {

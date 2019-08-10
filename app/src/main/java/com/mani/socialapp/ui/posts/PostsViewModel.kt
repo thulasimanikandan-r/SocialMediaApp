@@ -7,19 +7,21 @@ import androidx.paging.Config
 import androidx.paging.toLiveData
 import com.mani.socialapp.data.repo.PostRepo
 import com.mani.socialapp.util.AndroidDisposable
+import com.mani.socialapp.util.SharedPreference
 import io.reactivex.schedulers.Schedulers
 
 class PostsViewModel(app: Application) : AndroidViewModel(app) {
 
     private val postRepo = PostRepo(app)
     private var disposable = AndroidDisposable()
+    private val userId = SharedPreference(app).getValueInt("userId")
 
-    val allPosts = postRepo.getAllPostsFromDB().toLiveData(Config(30))
+    val allPosts = postRepo.getAllPostsByUser(userId).toLiveData(Config(30))
     val allComments = postRepo.getAllCommentsFromDB().toLiveData(Config(30))
 
     fun getAllPosts() {
         disposable.add(
-            postRepo.getAllPostData(1)
+            postRepo.getAllPostData(userId)
                 .observeOn(Schedulers.io())
                 .subscribeOn(Schedulers.io())
                 .subscribe({ posts ->
@@ -32,7 +34,7 @@ class PostsViewModel(app: Application) : AndroidViewModel(app) {
         )
     }
 
-    fun getAllComments(postId :Int) {
+    fun getAllComments(postId: Int) {
         disposable.add(
             postRepo.getAllCommentsByPostId(postId)
                 .observeOn(Schedulers.io())

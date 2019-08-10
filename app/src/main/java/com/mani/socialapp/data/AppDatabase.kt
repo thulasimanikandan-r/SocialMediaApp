@@ -4,17 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.mani.socialapp.data.dao.AlbumsDao
-import com.mani.socialapp.data.dao.CommentsDao
-import com.mani.socialapp.data.dao.PhotosDao
-import com.mani.socialapp.data.dao.PostDao
-import com.mani.socialapp.data.model.Albums
-import com.mani.socialapp.data.model.Photos
-import com.mani.socialapp.data.model.Comments
-import com.mani.socialapp.data.model.Posts
+import com.mani.socialapp.data.dao.*
+import com.mani.socialapp.data.model.*
 
 @Database(
-    entities = [Posts::class, Comments::class, Albums::class, Photos::class],
+    entities = [Posts::class, Comments::class, Albums::class, Photos::class, User::class],
     version = 1,
     exportSchema = false
 )
@@ -27,6 +21,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun getAlbumsDao(): AlbumsDao
 
     abstract fun getPhotosDao(): PhotosDao
+
+    abstract fun getUsersDao(): UsersDao
 
     companion object {
 

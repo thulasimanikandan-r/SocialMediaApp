@@ -17,6 +17,9 @@ interface AlbumsDao {
     @Query("Select * from Albums")
     fun getAllData(): DataSource.Factory<Int, Albums>
 
+    @Query("Select * from Albums where userId =:userId")
+    fun getAllDataByUser(userId: Int): DataSource.Factory<Int, Albums>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(Albums: Albums)
 

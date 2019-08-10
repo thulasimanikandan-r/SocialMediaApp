@@ -17,6 +17,9 @@ interface PostDao {
     @Query("Select * from Posts")
     fun getAllData(): DataSource.Factory<Int, Posts>
 
+    @Query("Select * from Posts where userId =:userId")
+    fun getAllDataByUser(userId: Int): DataSource.Factory<Int, Posts>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(posts: Posts)
 

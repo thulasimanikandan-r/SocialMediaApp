@@ -36,7 +36,7 @@ class AlbumsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         viewModel = ViewModelProviders.of(this).get(AlbumsViewModel::class.java)
-        viewModel.getAlbums(1)
+        viewModel.getAlbums()
 
         val adapter = AlbumsAdapter()
         viewModel.allAlbums.observe(this, Observer(adapter::submitList))
