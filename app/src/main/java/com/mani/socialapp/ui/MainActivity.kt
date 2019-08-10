@@ -1,9 +1,10 @@
-package com.mani.socialapp
+package com.mani.socialapp.ui
 
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.mani.socialapp.R
 import com.mani.socialapp.ui.albums.AlbumsFragment
 import com.mani.socialapp.ui.posts.PostsFragment
 import com.mani.socialapp.util.addFragment

@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import com.mani.socialapp.MainActivity
+import com.mani.socialapp.ui.MainActivity
 import com.mani.socialapp.R
 import com.mani.socialapp.ui.albums.AlbumsViewModel
 import com.mani.socialapp.util.updateActionBarTitle
