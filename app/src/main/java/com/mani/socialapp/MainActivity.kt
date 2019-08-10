@@ -1,11 +1,12 @@
 package com.mani.socialapp
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.mani.socialapp.ui.albums.AlbumsFragment
 import com.mani.socialapp.ui.posts.PostsFragment
+import com.mani.socialapp.util.addFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,11 +14,11 @@ class MainActivity : AppCompatActivity() {
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_posts -> {
-                navigateToFragment(PostsFragment.newInstance(), "PostsFragment")
+                addFragment(R.id.fragment, PostsFragment.newInstance(), "PostsFragment")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_albums -> {
-
+                addFragment(R.id.fragment, AlbumsFragment.newInstance(), "AlbumsFragment")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_user_details -> {
@@ -31,16 +32,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         textMessage = findViewById(R.id.message)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-    }
-
-    private fun navigateToFragment(fragment: Fragment, fragmentId: String?) {
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.fragment, fragment, fragmentId)
-            .commit()
+        navView.selectedItemId = R.id.navigation_posts
     }
 }
