@@ -33,7 +33,7 @@ class UserDetailsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(UsersViewModel::class.java)
-
+        viewModel.getAllUsers()
         viewModel.user.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 name.editText?.text = getEditableData(it.name)
