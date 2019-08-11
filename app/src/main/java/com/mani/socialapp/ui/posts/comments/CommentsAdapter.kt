@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mani.socialapp.R
 import com.mani.socialapp.data.model.Comments
+import kotlinx.android.synthetic.main.comments_fragment.view.*
 
 class CommentsAdapter : PagedListAdapter<Comments, CommentsAdapter.CommentsViewHolder>(
     DIFF_CALLBACK
@@ -29,12 +30,13 @@ class CommentsAdapter : PagedListAdapter<Comments, CommentsAdapter.CommentsViewH
     }
 
     inner class CommentsViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.content_recycler_view, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.comments_fragment, parent, false)
     ) {
 
         fun bindTo(Comments: Comments?) {
-            itemView.findViewById<TextView>(R.id.title).text = Comments?.name
-            itemView.findViewById<TextView>(R.id.body).text = Comments?.body
+            itemView.title.text = Comments?.name
+            itemView.email.text = Comments?.email
+            itemView.body.text = Comments?.body
             itemView.setOnClickListener {
                 onItemClick?.invoke(Comments)
             }

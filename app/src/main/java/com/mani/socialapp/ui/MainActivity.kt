@@ -1,6 +1,7 @@
 package com.mani.socialapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
@@ -12,10 +13,12 @@ import com.mani.socialapp.ui.posts.PostsFragment
 import com.mani.socialapp.ui.users.UserDetailsFragment
 import com.mani.socialapp.ui.users.UsersFragment
 import com.mani.socialapp.util.addFragment
+import com.mani.socialapp.util.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var textMessage: TextView
+    private lateinit var navView: BottomNavigationView
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_posts -> {
@@ -27,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_user_details -> {
-                addFragment(R.id.fragment, UserDetailsFragment.newInstance(), "UsersDetailsFragment")
+                replaceFragment(R.id.fragment, UserDetailsFragment.newInstance(), "UsersDetailsFragment")
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -38,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        navView = findViewById(R.id.nav_view)
 
         textMessage = findViewById(R.id.message)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
@@ -64,5 +67,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-

@@ -26,7 +26,7 @@ class PostsViewModel(app: Application) : AndroidViewModel(app) {
                 .subscribeOn(Schedulers.io())
                 .subscribe({ posts ->
                     postRepo.insertAllData(posts)
-                    Log.d("test", "test$posts")
+                    Log.d("test", "poste->$posts")
                 }, { error ->
                     error.printStackTrace()
                     Log.e("test", "Post Error->$error.printStackTrace()")

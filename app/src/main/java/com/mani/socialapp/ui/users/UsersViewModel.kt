@@ -21,7 +21,6 @@ class UsersViewModel(app: Application) : AndroidViewModel(app) {
 
     val allUsers = userRepo.getAllDataFromDB().toLiveData(Config(30))
     var user = userRepo.getAllDataById(userId)
-   // val user = userRepo.getAllDataById(userId)
 
     fun getAllUsers() {
         disposable.add(
