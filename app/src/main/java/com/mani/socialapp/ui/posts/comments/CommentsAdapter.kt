@@ -37,9 +37,6 @@ class CommentsAdapter : PagedListAdapter<Comments, CommentsAdapter.CommentsViewH
             itemView.title.text = Comments?.name
             itemView.email.text = Comments?.email
             itemView.body.text = Comments?.body
-            itemView.setOnClickListener {
-                onItemClick?.invoke(Comments)
-            }
         }
     }
 }

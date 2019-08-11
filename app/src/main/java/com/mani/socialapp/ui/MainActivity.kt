@@ -22,11 +22,11 @@ class MainActivity : AppCompatActivity() {
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_posts -> {
-                addFragment(R.id.fragment, PostsFragment.newInstance(), "PostsFragment")
+                replaceFragment(R.id.fragment, PostsFragment.newInstance(), "PostsFragment")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_albums -> {
-                addFragment(R.id.fragment, AlbumsFragment.newInstance(), "AlbumsFragment")
+                replaceFragment(R.id.fragment, AlbumsFragment.newInstance(), "AlbumsFragment")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_user_details -> {

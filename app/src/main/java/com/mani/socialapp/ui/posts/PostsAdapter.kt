@@ -1,13 +1,16 @@
 package com.mani.socialapp.ui.posts
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mani.socialapp.R
 import com.mani.socialapp.data.model.Posts
+import kotlinx.android.synthetic.main.content_recycler_view.view.*
 
 class PostsAdapter : PagedListAdapter<Posts, PostsAdapter.PostViewHolder>(DIFF_CALLBACK) {
 
@@ -34,8 +37,9 @@ class PostsAdapter : PagedListAdapter<Posts, PostsAdapter.PostViewHolder>(DIFF_C
         fun bindTo(posts: Posts?) {
             itemView.findViewById<TextView>(R.id.title).text = posts?.title
             itemView.findViewById<TextView>(R.id.body).text = posts?.body
-            itemView.setOnClickListener {
-                onItemClick?.invoke(posts)
+            itemView.findViewById<Button>(R.id.commentsButton).apply {
+                visibility = View.VISIBLE
+                setOnClickListener { onItemClick?.invoke(posts) }
             }
         }
     }
