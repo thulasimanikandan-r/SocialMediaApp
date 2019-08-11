@@ -34,7 +34,7 @@ class UserDetailsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(UsersViewModel::class.java)
 
-        viewModel.user.observe(this, Observer {
+        viewModel.user.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 name.editText?.text = getEditableData(it.name)
                 email.editText?.text = getEditableData(it.email)

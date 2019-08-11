@@ -3,11 +3,8 @@ package com.mani.socialapp.ui.users
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.paging.Config
 import androidx.paging.toLiveData
-import com.mani.socialapp.data.model.User
 import com.mani.socialapp.data.repo.UserRepo
 import com.mani.socialapp.util.AndroidDisposable
 import com.mani.socialapp.util.SharedPreference

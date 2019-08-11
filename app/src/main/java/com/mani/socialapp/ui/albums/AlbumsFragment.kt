@@ -39,7 +39,7 @@ class AlbumsFragment : Fragment() {
         viewModel.getAlbums()
 
         val adapter = AlbumsAdapter()
-        viewModel.allAlbums.observe(this, Observer(adapter::submitList))
+        viewModel.allAlbums.observe(viewLifecycleOwner, Observer(adapter::submitList))
         contentRecyclerView.apply {
             this.adapter = adapter
             adapter.onItemClick = {

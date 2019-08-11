@@ -38,7 +38,7 @@ class PostsFragment : Fragment() {
         viewModel.getAllPosts()
 
         val adapter = PostsAdapter()
-        viewModel.allPosts.observe(this, Observer(adapter::submitList))
+        viewModel.allPosts.observe(viewLifecycleOwner, Observer(adapter::submitList))
 
         contentRecyclerView.apply {
             this.adapter = adapter

@@ -49,7 +49,7 @@ class PhotosFragment : Fragment() {
         viewModel.getPhotos(albumId)
 
         val adapter = PhotosAdapter()
-        viewModel.allPhotos.observe(this, Observer(adapter::submitList))
+        viewModel.allPhotos.observe(viewLifecycleOwner, Observer(adapter::submitList))
         contentRecyclerView.apply {
             this.adapter = adapter
             layoutManager = GridLayoutManager(this@PhotosFragment.context, 2)
