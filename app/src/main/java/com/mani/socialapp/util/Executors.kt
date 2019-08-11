@@ -1,10 +1,12 @@
 package com.mani.socialapp.util
 
 import android.text.Editable
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.mani.socialapp.ui.MainActivity
 
 inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
     val fragmentTransaction = beginTransaction()

@@ -43,10 +43,6 @@ class CommentsFragment : BottomSheetDialogFragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.contentRecyclerView)
         recyclerView.apply {
             this.adapter = adapter
-
-            adapter.onItemClick = {
-                Toast.makeText(this@CommentsFragment.context, "inside${it?.id}", Toast.LENGTH_SHORT).show()
-            }
         }
 
         dialog.setContentView(view)

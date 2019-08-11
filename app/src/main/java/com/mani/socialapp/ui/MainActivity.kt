@@ -1,10 +1,8 @@
 package com.mani.socialapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mani.socialapp.R
@@ -12,12 +10,10 @@ import com.mani.socialapp.ui.albums.AlbumsFragment
 import com.mani.socialapp.ui.posts.PostsFragment
 import com.mani.socialapp.ui.users.UserDetailsFragment
 import com.mani.socialapp.ui.users.UsersFragment
-import com.mani.socialapp.util.addFragment
 import com.mani.socialapp.util.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var textMessage: TextView
     private lateinit var navView: BottomNavigationView
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -42,8 +38,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         navView = findViewById(R.id.nav_view)
-
-        textMessage = findViewById(R.id.message)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         navView.selectedItemId = R.id.navigation_posts
     }

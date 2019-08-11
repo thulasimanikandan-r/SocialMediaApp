@@ -51,7 +51,6 @@ class AlbumsFragment : Fragment() {
                         "PhotosFragment"
                     ).addToBackStack("AlbumsFragment")
                 }
-                Toast.makeText(this@AlbumsFragment.context, "inside${it?.id}", Toast.LENGTH_SHORT).show()
             }
         }
     }

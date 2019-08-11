@@ -2,6 +2,8 @@ package com.mani.socialapp.ui.posts
 
 import android.app.Application
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import androidx.lifecycle.AndroidViewModel
 import androidx.paging.Config
 import androidx.paging.toLiveData
@@ -21,15 +23,14 @@ class PostsViewModel(app: Application) : AndroidViewModel(app) {
 
     fun getAllPosts() {
         disposable.add(
+
             postRepo.getAllPostData(userId)
                 .observeOn(Schedulers.io())
                 .subscribeOn(Schedulers.io())
                 .subscribe({ posts ->
                     postRepo.insertAllData(posts)
-                    Log.d("test", "poste->$posts")
                 }, { error ->
                     error.printStackTrace()
-                    Log.e("test", "Post Error->$error.printStackTrace()")
                 })
         )
     }
@@ -41,10 +42,8 @@ class PostsViewModel(app: Application) : AndroidViewModel(app) {
                 .subscribeOn(Schedulers.io())
                 .subscribe({ comments ->
                     postRepo.insertAllComments(comments)
-                    Log.d("test", "test$comments")
                 }, { error ->
                     error.printStackTrace()
-                    Log.e("test", "comments Error->$error.printStackTrace()")
                 })
         )
     }

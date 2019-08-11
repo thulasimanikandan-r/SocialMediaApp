@@ -12,6 +12,7 @@ import com.mani.socialapp.ui.MainActivity
 import com.mani.socialapp.R
 import com.mani.socialapp.ui.posts.comments.CommentsFragment
 import com.mani.socialapp.util.updateActionBarTitle
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.post_fragment.*
 
 class PostsFragment : Fragment() {
@@ -38,12 +39,12 @@ class PostsFragment : Fragment() {
 
         val adapter = PostsAdapter()
         viewModel.allPosts.observe(this, Observer(adapter::submitList))
+
         contentRecyclerView.apply {
             this.adapter = adapter
             adapter.onItemClick = {
                 val postId = if (it?.id != null) it.id else 1
                 CommentsFragment.newInstance(postId).show(childFragmentManager, "CommentsBottomDialogFragment")
-                Toast.makeText(this@PostsFragment.context, "inside${it?.id}", Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -13,5 +13,5 @@ class SharedPreference(val context: Context) {
         editor.apply()
     }
 
-    fun getValueInt(KEY_NAME: String): Int = sharedPref.getInt(KEY_NAME, 0)
+    fun getValueInt(KEY_NAME: String): Int = sharedPref.getInt(KEY_NAME, 1)
 }
